@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -16,6 +17,7 @@ import android.widget.ListView;
 import com.pluralsight.candycoded.DB.CandyContract.CandyEntry;
 import com.pluralsight.candycoded.DB.CandyCursorAdapter;
 import com.pluralsight.candycoded.DB.CandyDbHelper;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.loopj.android.http.AsyncHttpClient;
@@ -82,6 +84,14 @@ public class MainActivity extends AppCompatActivity {
     // ***
     // TODO - Task 1 - Show Store Information Activity
     // ***
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent infoIntent = new Intent(this, InfoActivity.class);
+        startActivity(infoIntent);
+        return super.onOptionsItemSelected(item);
+    }
 
     private void addCandiesToDatabase(Candy[] candies) {
         SQLiteDatabase db = candyDbHelper.getWritableDatabase();
